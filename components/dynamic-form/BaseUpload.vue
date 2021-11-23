@@ -38,12 +38,17 @@
 			<view v-if="param.readonly" class="Detail-Box" >
 				<view class="label"><span style="color: red;" v-if="param.required">*</span>{{param.label}}</view>
 				<view class="image-Box" v-if="param.value">
-					<img :src="item.url||icon.empty" mode="aspectFit" @click="handleWatch()" :style="{width:width,height:height,position:position,top:0,left:0,bottom:0,right:0,'z-index':zIndex}" class="Detail-image" v-for="(item,i) in JSON.parse(param.value)" :key="i"/>
-					<view style="width: auto;height: auto;top: 0;left: 0;right: 0;bottom: 0;position: fixed;z-index: 9999; background-color: #AAAAAA;" v-if="big===true"></view>
+					<view v-for="(item,i) in JSON.parse(param.value)" :key="i">
+						<img :src="item.url||icon.empty" mode="aspectFit" @click="handleWatch(i)" :style="{width:'80px',height:'80px','z-index':'0'}" class="Detail-image" />
+						<img :src="item.url||icon.empty" v-if="isShow==i" mode="aspectFit" @click="hideWatch()" :style="{width:'auto',height:'auto',position:'fixed',top:0,left:0,right:0,bottom:0,'z-index':'10000'}"/>
+						<view style="width: auto;height: auto;top: 0;left: 0;right: 0;bottom: 0;position: fixed;z-index: 9999; background-color: #AAAAAA;" @click="isShow===i" v-if="isShow==i"></view>
+					</view>
+
 				</view>
 				<view class="image-Box" v-if="!param.value">
-					<img :src="icon.empty" mode="aspectFit" @click="handleWatch()" :style="{width:width,height:height,position:position,top:0,left:0,bottom:0,right:0,'z-index':zIndex}" class="Detail-image" :key="i"/>
-					<view style="width: auto;height: auto;top: 0;left: 0;right: 0;bottom: 0;position: fixed;z-index: 9999; background-color: #AAAAAA;" v-if="big===true"></view>
+						<img :src="item.url||icon.empty" mode="aspectFit" @click="handleWatch(0)" :style="{width:'80px',height:'80px','z-index':'0'}" class="Detail-image" />
+						<img :src="item.url||icon.empty" v-if="isShow==0" mode="aspectFit" @click="hideWatch()" :style="{width:'auto',height:'auto',position:'fixed',top:0,left:0,right:0,bottom:0,'z-index':'10000'}"/>
+						<view style="width: auto;height: auto;top: 0;left: 0;right: 0;bottom: 0;position: fixed;z-index: 9999; background-color: #AAAAAA;" @click="isShow===null" v-if="isShow===0"></view>
 				</view>
 			</view>
 		</view>
@@ -77,11 +82,8 @@
           return {
               fileList: [],
 							icon:null,
-							position:"static",
-							width:"80px",
-							height:"80px",
-							zIndex:"0",
-							big:false
+							big:false,
+							isShow:null
           }  
         },
         watch: {
@@ -103,21 +105,27 @@
             }
 		},
         methods: {
+					// 关闭
+					hideWatch(){
+						this.isShow = null
+					},
 					// 查看
-					handleWatch(){
+					handleWatch(i){
 						this.big=!this.big
-						let style;
-						if(this.big===true){
-								this.position="fixed"
-								this.width="auto"
-								this.height="auto"
-								this.zIndex="10000"
-						}else{
-								this.position="static",
-								this.width="80px",
-								this.height="80px"
-								this.zIndex="1"
-						}
+						this.isShow = i
+						console.log(this.isShow)
+						// let style;
+						// if(this.big===true){
+						// 		this.position=""
+						// 		this.width="auto"
+						// 		this.height="auto"
+						// 		this.zIndex="10000"
+						// }else{
+						// 		this.position="",
+						// 		this.width="80px",
+						// 		this.height="80px"
+						// 		this.zIndex="1"
+						// }
 					},
             // 删除
             handleDelete (e) {

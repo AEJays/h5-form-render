@@ -45,7 +45,7 @@
 				// console.log("back")
 				// console.log(this.config)
 				uni.navigateBack({
-					delta:this.config.value
+					delta:this.config.value||1
 				})
 			},
 			exitThis(url){
@@ -57,7 +57,6 @@
 			jump(url,value){
 				uni.navigateTo({
 					url:this.config.url,
-					events:this.config.value,
 					fail(e) {
 						// console.log(e)
 					}

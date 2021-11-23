@@ -4,7 +4,7 @@
           <block v-if="_get(config, 'modules', []).length > 0">
             <view v-for="(item, index) in config.modules" :key="index">
 								<dynamic-form
-								:Details="Details"
+								:Details="Details||item.Details"
 									v-if="_get(item, 'type') === 'autoform'&&(item.code||item.FormKey||FormKey)"
 									:config="{
 										 ...getCode(item.API,item.code),
@@ -34,7 +34,7 @@
 								@getFormData="getFormData"
 									 />
 									<dynamic-form
-									:Details="Details"
+									:Details="Details||item.Details"
 										 v-if="_get(item, 'type') === 'autoform'&&!(item.code||item.FormKey||FormKey)"
 										 :config="{
 												..._get(config.moduleData, item.key, {}),

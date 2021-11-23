@@ -277,7 +277,7 @@
                 this.listSearch = { ...searchData, ..._.get(this.config, 'request.default', {}),...customData||{},...this.otherSearch||{} }
                 if (_.get(this.config, 'loadApi')) {
                     this.fetchList({ refresh: true })
-               
+               }
             },
             
             // 获取列表信息

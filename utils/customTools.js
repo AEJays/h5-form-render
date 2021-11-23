@@ -14,8 +14,8 @@
 			    const item1 = {
 			      __config__: {
 			        label: '检查方法',
-			        tag: 'el-radio-group',
-			        tagIcon: 'radio',
+			        tag: 'el-checkbox-group',
+			        tagIcon: 'checkbox',
 			        layout: 'colFormItem',
 			        required: false,
 			        title: item.title

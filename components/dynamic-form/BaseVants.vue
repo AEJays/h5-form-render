@@ -407,6 +407,7 @@
 									..._.has(item, 'show-word-limit') ? { 'show-word-limit': item['show-word-limit'] } : {}
 							 }
 							}
+							console.log(this.fields)
 							// // console.log("传到里面的配置",config)
 							return config
            },

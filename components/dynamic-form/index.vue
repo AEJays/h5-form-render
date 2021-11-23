@@ -105,12 +105,15 @@
 								v-if="!hideConfirm"
 								:formData="__FORM_DATA__"
 								:piId="piId"
+								:form="form"
+								:fields="fields"
 								:LastKey="LastKey"
 								:customValues="customValues"
 								:userlist="userlist||user"
 								:jumpUrl="jumpUrl"
 								:processDefineKey="processDefineKey"
 								:noCommit="noCommit"
+								@getError="getError"
 								></confirm>
 								<view class="button-box" v-if="hideConfirm">
 									<button
@@ -365,9 +368,12 @@
                this.fetchDefaultFormConfig()
 							 this.skeletonLoading = false
             }
-						console.log(this.name,"name")
-						let lastform = uni.getStorageSync(this.name)
-						this.form = lastform
+						if(this.name){
+							console.log(this.name,"name")
+							let lastform = uni.getStorageSync(this.name)
+							this.form = {...this.form,...lastform}
+						}
+
 			// 外部传入的数据源
 			if (Object.keys(this.srvFormData).length > 0) {
                 this.form = { ...this.form, ...this.srvFormData }
@@ -379,6 +385,11 @@
             _get (item, str, defauleValue = '') {
               return _.get(item, str, defauleValue)
             },
+						// 获取confirm的错误信息
+						getError(e){
+							console.log(e)
+							this.fields = e
+						},
 						// 过滤字段
 						getExpect(item){
 							let status

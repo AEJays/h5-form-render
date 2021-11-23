@@ -97,7 +97,9 @@
 			},
 			customValues:{
 				type:Object
-			}
+			},
+			form:Object,
+			fields:Object
 		},
 		watch:{
 			piId:{
@@ -159,7 +161,61 @@
 					delta:10
 				})
 			},
+			// 设置错误信息
+			handleRecursive (data = []) {
+			    data.map(x => {
+			        if (_.get(x, '__config__.required') === true) {
+			const formType = _.get(x, '__config__.tag')
+			            if (['', undefined, null].includes(this.form[x.__vModel__])) {
+			                x.error = true
+			            }
+			            if (['el-checkbox-group', 'el-multiple-modal-select'].includes(formType) && _.get(this.form, x.__vModel__, []).length === 0) {
+			               x.error = true 
+			            }
+			if (formType === 'el-switch' && ['', undefined, null, false].includes(this.form[x.__vModel__])) {
+				x.error = true
+			}
+			            if (formType === 'el-slider' && ['', undefined, null, false, 0].includes(this.form[x.__vModel__])) {
+			                x.error = true
+			            }
+			        }
+			        if (_.get(x, '__config__.children', []).length > 0) {
+			            x.__config__.children = [...this.handleRecursive(x.__config__.children)]
+			        }
+			        return x
+			    })
+			    return data
+			},
 			GetAgree(openType){
+				console.log(this.processDefineKey)
+				const list = this.fields
+				        this.fields = [...this.handleRecursive(list)]
+				let isPass = true
+				let that = this
+				const checkField = (data = []) => {
+					data.map(x => {
+						if (x.error) {
+							isPass = false
+						}
+						if(x.__vModel__==="startTime"||x.__vModel__==="endTime"){
+							if(that.form["startTime"]>that.form["endTime"]){
+								isPass = false
+								x.error = true
+								x["error-message"]="开始时间不能大于结束时间"
+							}else{
+								x.error = false
+							}
+						}
+						if (_.get(x, '__config__.children', []).length > 0) {
+						   checkField(x.__config__.children) 
+						}
+					})
+				}
+				        checkField(this.fields)
+								this.$emit("getError",this.fields)
+				        if (!isPass) {
+				            return
+				        }
 				uni.showLoading({
 					title:"提交中"
 				})
@@ -205,7 +261,6 @@
 						"taskId":this.LastKey.taskId
 					}
 				}
-				let that = this
 				// console.log("JUMP",this.jumpUrl)
 				// // console.log(data)
 				let allName = uni.getStorageSync("allName")

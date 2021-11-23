@@ -1,7 +1,7 @@
 <!-- 跳转标准配置页面，纯配置页面都可以跳转到这，需要带参数！ -->
 <template>
 	<view>
-		<dynamic-page :API="api" v-if="api" :otherSumbitData="otherSumbitData"></dynamic-page>
+		<dynamic-page :API="api" v-if="api" :otherSearch="otherSearch" :otherSumbitData="otherSumbitData"></dynamic-page>
 	</view>
 </template>
 
@@ -29,11 +29,20 @@
 				"companyPhone":companyInfo.personName,
 				"companyAddress":companyInfo.address
 			}
+			if(decode.id==564064){
+				this.otherSearch = {
+					"listWheres":[{
+					"O_CODE":"equal",
+					"F_CODE":"companyId",
+					"VALUE":companyInfo.id
+				}]}
+			}
 		},
 		data() {
 			return {
 				api:null,
-				otherSumbitData:{}
+				otherSumbitData:{},
+				otherSearch:{}
 			}
 		},
 		methods: {
