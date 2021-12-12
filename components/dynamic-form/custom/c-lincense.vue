@@ -112,12 +112,13 @@
 											})
 										}
 									})
+									console.log(globalConfig.workflowEP+uploadData)
 									let value = {
 										...jsonObject.data,
-										"licenseImage":globalConfig.workflowEP+uploadData
+										"licenceImagesUrl":JSON.stringify([{"url":globalConfig.workflowEP+uploadData}])
 									}
 									// console.log(value)
-									that.$emit('getValue',jsonObject.data)
+									that.$emit('getValue',value)
 									uni.hideLoading()
 								}
 							},

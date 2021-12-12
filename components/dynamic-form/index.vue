@@ -484,6 +484,7 @@
 							// console.log("CODEDATA",this.codeData)
 						},
 						lincenseValue(e){
+							console.log(e)
 							this.skeletonLoading = true
 							let fields = this.config.fields
 							let vModel=[];
@@ -536,7 +537,7 @@
 								// 	this.form[i] = e[i]
 								// }
 							
-							// console.log(this.form)
+							console.log(this.form)
 							this.skeletonLoading = false
 						},
 						// 校检loadAPI
@@ -871,6 +872,7 @@
 								allName = allName.splice(this.name,1)
 								uni.setStorageSync("allName",allName)
 								uni.removeStorageSync(this.name)
+								console.log(this.form,"form")
                 let submitData = {
                     ...this.formInfo,
                     ..._.get(this.srvFormData, 'id') ? { id: this.srvFormData.id } : {},
@@ -971,6 +973,7 @@
 										// console.log("SUBMITDATA",submitData)
 										let otherData = {}
 										let returnValue = ["reg_num","person","phone","business","establish_date","valid_period","captial"]
+										console.log(submitData,"submit")
 										for(var i in submitData){
 											returnValue.map((item,v)=>{
 												if(i !== item){

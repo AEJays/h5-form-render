@@ -44,9 +44,6 @@
 
 <script>
     export default {
-			mounted(){
-				console.log(this.param)
-			},
         props: {
             param: {
                 type: Object,
