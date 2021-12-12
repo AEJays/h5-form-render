@@ -1,7 +1,7 @@
 <!-- 跳转标准配置页面，纯配置页面都可以跳转到这，需要带参数！ -->
 <template>
 	<view>
-		<dynamic-page :API="api" v-if="api" :otherSearch="otherSearch" :otherSumbitData="otherSumbitData"></dynamic-page>
+		<dynamic-page :API="api" v-if="api" :otherSearch="otherSearch" :otherSumbitData="otherSumbitData" :hideConfirm="true"></dynamic-page>
 	</view>
 </template>
 
@@ -20,14 +20,20 @@
 			this.api=`${globalConfig.formHost}?id=${decode.id}`
 			let companyInfo = uni.getStorageSync("companyInfo")
 			let stringCompany = JSON.stringify(companyInfo)
-			this.otherSumbitData = {
-				"companyId":companyInfo.id,
-				"companyName":companyInfo.name,
-				"companyType":companyInfo.type,
-				"businessLicense":companyInfo.lincenseNo,
-				"companyLegalPerson":companyInfo.personName,
-				"companyPhone":companyInfo.personName,
-				"companyAddress":companyInfo.address
+			console.log(companyInfo)
+			if(decode.type==="yyzz"){
+
+			}else{
+				console.log(decode.type,"type")
+				this.otherSumbitData = {
+					"companyId":companyInfo.id,
+					"companyName":companyInfo.name,
+					"companyType":companyInfo.type,
+					"businessLicense":companyInfo.licenceNo,
+					"companyLegalPerson":companyInfo.personName,
+					"companyPhone":companyInfo.personPhone,
+					"companyAddress":companyInfo.address
+				}
 			}
 			if(decode.id==564064){
 				this.otherSearch = {
@@ -36,6 +42,9 @@
 					"F_CODE":"companyId",
 					"VALUE":companyInfo.id
 				}]}
+			}
+			if(decode.id==53125){
+				uni.removeStorageSync("isOneCompanyRegister")
 			}
 		},
 		data() {

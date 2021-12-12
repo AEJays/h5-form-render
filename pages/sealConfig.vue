@@ -102,7 +102,7 @@
 				uni.request({
 					url:`${globalConfig.formHost}?id=84512`,
 					success(res) {
-						console.log(res)
+						// console.log(res)
 						that.config = res.data.data
 					}
 				})
@@ -112,7 +112,7 @@
 				uni.request({
 					url:`${globalConfig.formHost}?id=84513`,
 					success(res) {
-						console.log(res)
+						// console.log(res)
 						that.passwordConfig = res.data.data
 					}
 				})
@@ -128,14 +128,14 @@
 			},
 			// 显示表单
 			handleShowForm(id){
-				console.log(id)
+				// console.log(id)
 				this.showForm = id
 				
 			},
 			handleShowPassword(id){
-				console.log(id)
+				// console.log(id)
 				this.showPassword = id
-				console.log(this.showPassword)
+				// console.log(this.showPassword)
 			},
 			hideForm(){
 				this.showForm = null
@@ -194,7 +194,7 @@
 					data:data,
 					success(res) {
 						uni.hideLoading()
-						console.log(res)
+						// console.log(res)
 						if(res.data.code===0){
 								// console.log(res.data.data.records)
 								that.list.push(...res.data.data.records)

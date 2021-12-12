@@ -25,7 +25,7 @@
         },
         onLoad(e) {
             // 执行查看授权选项
-						// // console.log(e)
+						// console.log(e)
             // this.getSettingMes(e.id);//通过e.id拿编号
 						// 自动授权
 						this.onGotUserInfo(e.id)
@@ -36,7 +36,7 @@
             //     let _this = this;
             //     uni.getSetting({
             //         success(res) {
-												// // console.log(res)
+												// console.log(res)
             //             if (res.authSetting['scope.userInfo']) {
             //                 // 用户信息已授权，获取用户信息
             //                 uni.getUserInfo({
@@ -108,11 +108,11 @@
 																					"type":e,
 																					"userId":res.data.user_id
 																				}
-																				// // console.log(res.data)
-																				// // console.log(list)
-																				// // console.log(button)
+																				// console.log(res.data)
+																				// console.log(list)
+																				// console.log(button)
 																				if(button.confirm){
-																					// // console.log(true)
+																					// console.log(true)
 																					uni.redirectTo({
 																						url:"/pages/login/register?query="+encodeURIComponent(JSON.stringify(list)),
 																						success() {
@@ -154,9 +154,9 @@
 																				position:'center',
 																				duration: 500,
 																				success(click){
-																					// // console.log(click.confirm)
+																					// console.log(click.confirm)
 																					if(click.confirm||click.cancel){
-																						// // console.log(e)
+																						// console.log(e)
 																						// console.log(query)
 																						switch(e){
 																							case '2':uni.reLaunch({
@@ -188,7 +188,7 @@
 																				position:'center',
 																				duration: 500,
 																				success(click){
-																					// // console.log(click.confirm)
+																					// console.log(click.confirm)
 																					if(click.confirm||click.cancel){
 																						uni.navigateBack({
 																							delta:1
@@ -209,7 +209,7 @@
 																position:'center',
 																duration: 500,
 																success(click){
-																	// // console.log(click.confirm)
+																	// console.log(click.confirm)
 																	if(click.confirm||click.cancel){
 																		uni.navigateBack({
 																			delta:1

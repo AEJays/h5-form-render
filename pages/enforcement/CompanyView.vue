@@ -92,13 +92,13 @@
 		},
 		onLoad(e) {
 			// let query = Base64.decode(e.query)
-			// // console.log(query)
+			// console.log(query)
 			// ModelData = this.getList(e.id)
 			uni.showLoading({
 				title:"加载中"
 			})
 			this.query = JSON.parse(decodeURIComponent(e.query))
-			console.log(this.query,"query")
+			// console.log(this.query,"query")
 			// console.log(e.id)
 			this.getValue(e.id)
 			// this.pageData["id"]=e.id
@@ -142,8 +142,8 @@
 			}
 			this.getQrUrl()
 			// this.data = Modeldata
-			// // console.log("md",Modeldata)
-			// // console.log("this",this.data)
+			// console.log("md",Modeldata)
+			// console.log("this",this.data)
 			// this.getValue(e.id)
 		},
 		created() {
@@ -171,7 +171,7 @@
 			// 二维码地址
 			getQrUrl(){
 				this.qr_url = `${globalConfig.workflowEP}/api.webapp/invQrCode/${this.query.licenceNo}/Mes`
-				console.log(this.qr_url)
+				// console.log(this.qr_url)
 				if(this.qr_url){
 					this.showQrcode();//一加载生成二维码
 				}
@@ -200,11 +200,11 @@
 							Authorization: `Bearer ${uni.getStorageSync(globalConfig.tokenStorageKey)}`
 					},
 					complete(res) {
-						// // console.log(res)
+						// console.log(res)
 						that.data = res.data.data
 						that.pageData["name"]=res.data.data.name
 						uni.hideLoading()
-						// // console.log("data",res.data.data)
+						// console.log("data",res.data.data)
 					}
 				})
 			}
@@ -216,7 +216,7 @@
 			// },
 			// async getList(id){
 			// 	let res = await getSearchALL(id)
-			// 	// // console.log(res)
+			// 	// console.log(res)
 			// 	let data = res.data
 			// 	// console.log("data",res.data)
 			// 	Modeldata =  data

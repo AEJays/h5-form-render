@@ -29,7 +29,7 @@
         },
         onLoad(e) {
             // 执行查看授权选项
-						// // console.log(e)
+						// console.log(e)
             // this.getSettingMes(e.id);//通过e.id拿编号
 						// 自动授权e
 						this.$cache("loginData")
@@ -45,7 +45,7 @@
             //     let _this = this;
             //     uni.getSetting({
             //         success(res) {
-												// // console.log(res)
+												// console.log(res)
             //             if (res.authSetting['scope.userInfo']) {
             //                 // 用户信息已授权，获取用户信息
             //                 uni.getUserInfo({
@@ -147,7 +147,7 @@
 																	...e.data.data,
 																	"streetName":companyInfo.data.data.streetName
 																}
-																console.log(data)
+																// console.log(data)
 																uni.setStorageSync("companyInfo",data)
 																globalConfig.companyInfo = uni.getStorageSync("companyInfo")
 															}
@@ -191,7 +191,7 @@
 													position:"center",
 													duration: 500,
 													success(click){
-														// // console.log(click.confirm)
+														// console.log(click.confirm)
 														if(click.confirm||click.cancel){
 															uni.navigateBack({
 																delta:1
@@ -232,7 +232,7 @@
 						// 	let loginData = this.$cache("loginData")
 						// 	if(loginData&&loginData!=""){
 						// 		that.getThirdLogin(loginData.iv,loginData.encryptedData,loginData.rawData,e)
-						// 		console.log("不调取微信接口登录")
+						// 		// console.log("不调取微信接口登录")
 						// 	}else{
 						// 		uni.showModal({
 						// 			title: '申请',
@@ -339,7 +339,7 @@
 						// 			 desc: "获取你的昵称、头像、地区及性别",
 						// 			 success: res => {
 						// 				 that.GetInfo = true
-						// 				 // // console.log(res)
+						// 				 // console.log(res)
 						// 				 that.id = e.id
 						// 				 // that.userInfo = res.userInfo;
 						// 				 that.userInfo.iv=res.iv;
@@ -357,7 +357,7 @@
 						// 				newRawData = JSON.stringify(jsonRaw)
 						// 				// let testData
 						// 				// testData = Base64.decode(res.encryptedData)
-						// 				// // console.log(testData)
+						// 				// console.log(testData)
 						// 				 that.userInfo.rawData = newRawData;
 						// 				 // that.userInfo.rawData = res.rawData;
 						// 				 that.userInfo.type = e
@@ -367,7 +367,7 @@
 						// 				 					let LoginData = {
 						// 				 						..._this.userInfo,
 						// 				 					}
-						// 				 					// // console.log(LoginData)
+						// 				 					// console.log(LoginData)
 						// 				           //发起网络请求
 						// 				           uni.request({
 						// 				             // 请求路径
@@ -381,7 +381,7 @@
 						// 				             data: LoginData,
 						// 				             method: 'POST',
 						// 				 						success(res){
-						// 				 								// // console.log(res)
+						// 				 								// console.log(res)
 						// 				                 // 请求成功后获取openid和session_key
 						// 											if(res.data.code===-1){
 						// 				 								uni.showModal({
@@ -395,11 +395,11 @@
 						// 				 											..._this.userInfo,
 						// 				 											"type":e
 						// 				 										}
-						// 				 										// // console.log(res.data)
-						// 				 										// // console.log(list)
-						// 				 										// // console.log(button)
+						// 				 										// console.log(res.data)
+						// 				 										// console.log(list)
+						// 				 										// console.log(button)
 						// 				 										if(button.confirm){
-						// 				 											// // console.log(true)
+						// 				 											// console.log(true)
 						// 				 											uni.redirectTo({
 						// 				 												url:"/pages/login/third-Login/third-register?query="+encodeURIComponent(JSON.stringify(list)),
 						// 				 												success() {
@@ -429,7 +429,7 @@
 						// 				 									let code;
 						// 													let userid;
 						// 													let deptId;
-						// 													// // console.log(res.data)
+						// 													// console.log(res.data)
 						// 				 									token = res.data.encryptedData
 						// 				 									nickName = res.data.nickname
 						// 													username = res.data.username
@@ -444,13 +444,13 @@
 						// 																Authorization:`Bearer ${token}`
 						// 															},
 						// 															success(e) {
-						// 																// // console.log(e)
+						// 																// console.log(e)
 						// 																uni.setStorageSync("companyInfo",e.data.data)
 						// 																globalConfig.companyInfo = uni.getStorageSync("companyInfo")
 						// 															}
 						// 														})
 						// 													}
-						// 				 									// // console.log(avatar)
+						// 				 									// console.log(avatar)
 						// 				 									let query = {
 						// 				 										"nickName":nickName	,//微信登录的用户名
 						// 				 										"avatar":avatar, //微信登录头像
@@ -466,32 +466,32 @@
 						// 				 										position:'center',
 						// 				 										duration: 500,
 						// 				 										success(click){
-						// 				 											// // console.log(click.confirm)
+						// 				 											// console.log(click.confirm)
 						// 				 											if(click.confirm||click.cancel){
-						// 				 												// // console.log(e)
-						// 				 												// // console.log(query)
+						// 				 												// console.log(e)
+						// 				 												// console.log(query)
 						// 																uni.setStorageSync("userInfo",query)
 						// 																uni.getStorageSync("userInfo")
-						// 																// // console.log("获取",a)
+						// 																// console.log("获取",a)
 						// 				 												switch(e){
 						// 				 													case '2':uni.reLaunch({
 						// 				 														url:"/pages/Market-index/Market-index?query="+encodeURIComponent(JSON.stringify(query)),
 						// 				 														// url:"/pages/test/testUpload?query="+encodeURIComponent(JSON.stringify(query)),
 						// 				 														fail(ea) {
-						// 				 															// // console.log(ea)
+						// 				 															// console.log(ea)
 						// 				 														}
 						// 				 													});break;
 						// 				 													case '4':uni.reLaunch({
 						// 				 														url:"/pages/companyHome/home?query="+encodeURIComponent(JSON.stringify(query)),
 						// 																		// url:"/pages/test/testUpload?query="+encodeURIComponent(JSON.stringify(query)),
 						// 				 														fail(ea) {
-						// 				 															// // console.log(ea)
+						// 				 															// console.log(ea)
 						// 				 														}
 						// 				 													});break;
 						// 				 													case '3':uni.reLaunch({
 						// 				 														url:"/pages/street/myhome?query="+encodeURIComponent(JSON.stringify(query)),
 						// 				 														fail(ea) {
-						// 				 															// // console.log(ea)
+						// 				 															// console.log(ea)
 						// 				 														}
 						// 				 													});break;
 						// 				 												}
@@ -505,7 +505,7 @@
 						// 				 										position:'center',
 						// 				 										duration: 500,
 						// 				 										success(click){
-						// 				 											// // console.log(click.confirm)
+						// 				 											// console.log(click.confirm)
 						// 				 											if(click.confirm||click.cancel){
 						// 				 												uni.navigateBack({
 						// 				 													delta:1
@@ -526,7 +526,7 @@
 						// 				 						position:'center',
 						// 				 						duration: 500,
 						// 				 						success(click){
-						// 				 							// // console.log(click.confirm)
+						// 				 							// console.log(click.confirm)
 						// 				 							if(click.confirm||click.cancel){
 						// 				 								uni.navigateBack({
 						// 				 									delta:1

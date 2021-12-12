@@ -134,7 +134,7 @@
 					url:`${globalConfig.dataHost}?id=5557`,
 					method:"GET",
 					success(res) {
-						// // console.log("res",res)
+						// console.log("res",res)
 						that.list = res.data.data.list
 					}
 				})

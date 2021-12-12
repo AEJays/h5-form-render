@@ -130,7 +130,7 @@
 			uni.getLocation({
 				type: 'gcj02',
 				success: (res) => {
-					// // console.log("res",res)
+					// console.log("res",res)
 					getAddress(
 						{
 							latitude:  _.get(res, 'latitude'), 

@@ -84,11 +84,11 @@ wait: 待完成文本
 		},
 		created() {
 			this.iconList = globalConfig.icon
-			// // console.log("iconList",this.iconList)
+			// console.log("iconList",this.iconList)
 		},
 		onLoad(){
 			// this.navigationUrl()
-			// // console.log(this.navigationUrl())
+			// console.log(this.navigationUrl())
 		},
 		methods:{
 			_get(data,field){
@@ -101,9 +101,9 @@ wait: 待完成文本
 				return DateString
 			},
 			getVal(string){
-				// // console.log(string)
+				// console.log(string)
 				string = "type"+string.replace(string[0],string[0].toUpperCase())
-				// // console.log(this.iconList[string])
+				// console.log(this.iconList[string])
 				return this.iconList[string]
 			},
 			handleDelete(){

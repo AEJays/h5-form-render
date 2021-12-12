@@ -21,7 +21,7 @@
 				query = { ...JSON.parse(decodeURIComponent(e.query)) }
 				this.requsetParam =  query
 			}else {
-				console.error('获取请求参数异常')
+				// console.error('获取请求参数异常')
 			}
 		},
 		data() {

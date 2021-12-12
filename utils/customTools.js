@@ -648,31 +648,31 @@
 				
 			// 	let res = await LoadComplete({"processDefineKey":key,"taskId":taskId})
 			// 	if(res.code==="00000"){
-			// 		// // console.log("获取到的数据res",res)
+			// 		// console.log("获取到的数据res",res)
 			// 		let list = res.data.nodeSettingEntity.formFiledEntityList
-			// 		// // console.log("list",list)
+			// 		// console.log("list",list)
 			// 		for(var i in list){
-			// 			// // console.log("name",list[i].name)
+			// 			// console.log("name",list[i].name)
 			// 			let status = list[i].status
 			// 			let fields = config
-			// 			// // console.log("config",config)
+			// 			// console.log("config",config)
 			// 					let __model__ = fields.__vModel__
 			// 					if(__model__===list[i].name){
 			// 						let __newConfig__ = fields
 			// 						if(status===0){
 			// 							newConfig={...__newConfig__,"readonly":true}
-			// 							// // console.log("NewConfig",newConfig)
+			// 							// console.log("NewConfig",newConfig)
 			// 						}else{
 			// 							newConfig={...__newConfig__,"readonly":false}
 			// 						}
 			// 						newField=newConfig
-			// 						// // console.log("NEWFIELD",newField)
+			// 						// console.log("NEWFIELD",newField)
 			// 						return newField
 			// 			}
 			// 			// if(config.fields)
 			// 		}
 			// 	}
-			// 	// // console.log("完成之后的配置",newField)
+			// 	// console.log("完成之后的配置",newField)
 			// 	return newField
 			// }
 			

@@ -764,7 +764,7 @@
 			ecclevel = ecc || ecclevel;
 			canvas = canvas || _canvas;
 			if (!canvas) {
-				console.warn('No canvas provided to draw QR code in!')
+				// console.warn('No canvas provided to draw QR code in!')
 				return;
 			}
 			

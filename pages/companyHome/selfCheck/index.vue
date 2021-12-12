@@ -15,6 +15,8 @@
 			 workflow="true"
 			 :company="true"
 			 :hideConfirm="true"
+			 :nextUrl="nextUrl"
+			 :nextText="nextText"
 			 v-if="srvFormData"
 		/>
 	</view>
@@ -28,6 +30,11 @@
 	export default {
 		components:{ dynamicPage },
 		onLoad (e){
+			if(e.next){
+				this.nextText = "下一步",
+				this.nextUrl = decodeURIComponent(e.next)
+				// console.log(this.nextUrl)
+			}
 		},
 		data() {
 			return {
@@ -41,7 +48,9 @@
 				ConfirmConfig:{
 					
 				},
-				srvFormData:null
+				srvFormData:null,
+				nextText:null,
+				nextUrl:null
 			}
 		},
 		created() {
@@ -51,18 +60,22 @@
 			// console.log(this.srvFormData,"SRVFORMDATA")
 		},
 		methods:{
+			// 获取配置
+			
 			async FormNo(){
 				let number = await getFormNo()
 				let date = new Date()
 				let day = date.getDate();
 				let month = date.getMonth()+1
+				let hour = date.getHours()<10?"0"+date.getHours():date.getHours()
+				let min = date.getMinutes()<10?"0"+date.getMinutes():date.getMinutes()
 				if(month<10){
 					month = "0"+month
 				}
 				let year = date.getFullYear()
 				this.srvFormData = {}
 				this.srvFormData["number"] = number.data
-				this.srvFormData["time"] = `${year}-${month}-${day}`
+				this.srvFormData["time"] = `${year}-${month}-${day} ${hour}:${min}`
 			},
 			getConfirmConfig(api){
 				let that = this

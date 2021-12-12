@@ -44,6 +44,9 @@
 
 <script>
     export default {
+			mounted(){
+				console.log(this.param)
+			},
         props: {
             param: {
                 type: Object,
@@ -80,8 +83,8 @@
 						},
 						textValue(value){
 							let json = this.returnValue(value)
-							console.log(this.param,"param")
-							console.log(json)
+							// console.log(this.param,"param")
+							// console.log(json)
 							let newJson = {}
 							let newValue = {}
 							let String = "";
@@ -93,8 +96,8 @@
 								json.map((item,i)=>{
 										newValue[item] = newJson[item]
 								})
-								// // console.log(newValue,"NEWValue")
-								// // console.log(newValue)
+								// console.log(newValue,"NEWValue")
+								// console.log(newValue)
 								let allValue = Object.values(newValue)
 								// console.log(allValue,"ALLVALUE")
 								for(var i in allValue){

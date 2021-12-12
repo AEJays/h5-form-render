@@ -97,20 +97,20 @@
 					},
 					complete(res) {
 						// console.log("records",res.data)
-						// // console.log("response",this.response)
+						// console.log("response",this.response)
 						let data = res.data
 						let response = _.get(data,_this.response,_.get(data,"data.records",[]))
-						// // console.log(response)
+						// console.log(response)
 						if(res.data.code===0){
 							for(var i in response){
-								// // console.log("this is i",i)
+								// console.log("this is i",i)
 									let responseData = response
 									_this.list.push(responseData[i])
-								// // console.log("this is list",_this.list)
+								// console.log("this is list",_this.list)
 							}
 						}
 						uni.hideLoading()
-							// // console.log("thisList",_this.list)
+							// console.log("thisList",_this.list)
 					}
 				})
 			},
@@ -130,9 +130,9 @@
 						Authorization:`Bearer ${uni.getStorageSync(`${globalConfig.tokenStorageKey}`)}`
 					},
 					success(res){
-						// // console.log("RES",res)
+						// console.log("RES",res)
 							that.name = res.data.data.name
-							// // console.log("THATNAME",that.name)
+							// console.log("THATNAME",that.name)
 							if(that.param.value.name===undefined||that.param.value.name===null||that.param.value.name===""){
 								// console.log("外部Name",that.name)
 								that.content = that.name
@@ -175,19 +175,19 @@
 								Authorization: `Bearer ${uni.getStorageSync(globalConfig.tokenStorageKey)}`
 						},
 						complete(res) {
-							// // console.log("records",res.data)
+							// console.log("records",res.data)
 						let data = res.data
 						let response = _.get(data,_this.response,_.get(data,"data.records",[]))
-						// // console.log(response)
+						// console.log(response)
 						if(res.data.code===0){
 							for(var i in response){
-								// // console.log("this is i",i)
+								// console.log("this is i",i)
 									let responseData = response
 									_this.list.push(responseData[i])
-								// // console.log("this is list",_this.list)
+								// console.log("this is list",_this.list)
 							}
 							}else{
-								// // console.log(res.data.data.msg)
+								// console.log(res.data.data.msg)
 							}
 						}
 					})
@@ -198,9 +198,9 @@
 					this.loadAPI = `${globalConfig.workflowEP}/api.flow.examine/queryNextExamineUser`
 				}
 				let url = this.loadAPI
-				// // console.log(url)
+				// console.log(url)
 				let _this = this
-				// // console.log(data)
+				// console.log(data)
 				uni.request({
 					url:url,
 					data:{
@@ -214,25 +214,25 @@
 					},
 					complete(res) {
 						// console.log("records",res.data)
-						// // console.log("response",this.response)
+						// console.log("response",this.response)
 						let data = res.data
 						let response = _.get(data,_this.response,_.get(data,"data.records",[]))
-						// // console.log(response)
+						// console.log(response)
 						if(res.data.code===0){
 							for(var i in response){
-								// // console.log("this is i",i)
+								// console.log("this is i",i)
 									let responseData = response
 									_this.list.push(responseData[i])
-								// // console.log("this is list",_this.list)
+								// console.log("this is list",_this.list)
 							}
-							// // console.log("thisList",_this.list)
+							// console.log("thisList",_this.list)
 						}else{
-							// // console.log(res.data.data.msg)
+							// console.log(res.data.data.msg)
 						}
 					}
 				})
 				// const res = await getselectList(url,data);
-				// // console.log(res)
+				// console.log(res)
 				// this.list = res.data.userList
 			},
 			showView(){
@@ -250,10 +250,10 @@
 			},
 			save(){
 				this.show = false
-				uni.pageScrollTo({
-					scrollTop: 0, 
-					duration: 300	
-				});
+				// uni.pageScrollTo({
+				// 	scrollTop: 0, 
+				// 	duration: 300	
+				// });
 			},
 			clear(){
 				this.content = null

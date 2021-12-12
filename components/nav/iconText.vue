@@ -28,7 +28,7 @@
 			}
 		},
 		created() {
-			console.log(this.imageBg,"IMAGEBG")
+			// console.log(this.imageBg,"IMAGEBG")
 		}
     }
 </script>

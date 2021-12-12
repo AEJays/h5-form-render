@@ -8,7 +8,7 @@ export const toPromise = (fn) => {
       }
       obj.fail = (res) => {
         reject(res)
-        // // console.log('reject==', res)
+        // console.log('reject==', res)
       }
       fn(obj)
     })

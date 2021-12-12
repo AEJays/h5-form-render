@@ -31,7 +31,7 @@
 						uni.setNavigationBarTitle({
 							title:res.data.data.title
 						})
-						// // console.log("data",res.data)
+						// console.log("data",res.data)
 						that.config=res.data.data.moduleData
 					}
 				})

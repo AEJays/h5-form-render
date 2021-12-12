@@ -19,7 +19,7 @@
 		},
 		created() {
 			this.icon = globalConfig.icon
-			console.log(this.icon)
+			// console.log(this.icon)
 		},
 		props:{
 			item:Object,
@@ -27,7 +27,7 @@
 		},
 		methods:{
 			getIcon(){
-				console.log(this.icon.typeAqy)
+				// console.log(this.icon.typeAqy)
 				return this.icon.typeAqy
 			}
 		}

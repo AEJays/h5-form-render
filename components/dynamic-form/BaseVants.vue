@@ -1,6 +1,6 @@
 <template>
     <view>
-       <block v-for="(item, index) in fields" :key="index">
+       <block v-for="(item, index) in fields" :key="index" v-if="!_get(item,'hidden')">
             <base-field
               v-if="['el-input'].includes(_get(item, '__config__.tag'))"
               :param="{
@@ -82,7 +82,8 @@
 				  ...getBaseParam(item),
 				  tagIcon: _get(item, '__config__.tagIcon'),
                   ..._get(item, 'error', false) ? { error: item.error } : {},
-				  ..._get(item, 'error') ? { 'error-message' : item['error-message'] || '' } : {}
+				  ..._get(item, 'error') ? { 'error-message' : item['error-message'] || '' } : {},
+					hasButton:_get(item,'hasButton')
 			  }"
 			  @confirm="(e) => handleSetValue(e, fields[index])"
 		   />
@@ -320,9 +321,9 @@
 							let longitude = this.form["longitude"]
 							let streetName = this.form["streetName"]
 							let streetId = this.form["streetId"]
-							// // console.log("获取到的item",isDisabled(item),"fields",this.fields)
-							// // console.log("这是form",this.form)
-							// // console.log("tag",_.get(item,'__config__.tag'))
+							// console.log("获取到的item",isDisabled(item),"fields",this.fields)
+							// console.log("这是form",this.form)
+							// console.log("tag",_.get(item,'__config__.tag'))
 							if(_.get(item,'__config__.tag')==='c-select-street'){
 								config={
 								 // title:_.get(item,'__config__.title'),
@@ -407,8 +408,8 @@
 									..._.has(item, 'show-word-limit') ? { 'show-word-limit': item['show-word-limit'] } : {}
 							 }
 							}
-							console.log(this.fields)
-							// // console.log("传到里面的配置",config)
+							// console.log(this.fields)
+							// console.log("传到里面的配置",config)
 							return config
            },
 		   _has (item = {}, str) {

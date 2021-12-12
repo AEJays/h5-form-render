@@ -113,7 +113,7 @@
 					handleWatch(i){
 						this.big=!this.big
 						this.isShow = i
-						console.log(this.isShow)
+						// console.log(this.isShow)
 						// let style;
 						// if(this.big===true){
 						// 		this.position=""
@@ -149,9 +149,9 @@
 												let Resdata = JSON.parse(res.data)
 												let resUrl = Resdata.data
             //             // const resUrl = res.data.data.substr(0, 5).includes('http') ? res.data.data :  globalConfig.workflowEP + res.data.data
-												// // console.log("resUrl",resUrl)
-												// // console.log("list",list)
-												// // console.log()
+												// console.log("resUrl",resUrl)
+												// console.log("list",list)
+												// console.log()
                         if (_.has(this.param, 'accept') && this.param.accept === 'file') {
                             const index = resUrl.lastIndexOf('.')
                             const str = resUrl.substr(index + 1)

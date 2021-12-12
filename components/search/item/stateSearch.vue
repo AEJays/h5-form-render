@@ -55,6 +55,13 @@
 			>.title{
 				font-size: 14px;
 				width: auto;
+				/* max-width: 20px; */
+				max-width: 20em;
+				overflow: hidden;
+				white-space: nowrap;
+				display: block;
+				float: left;
+				text-overflow: ellipsis;
 				font-weight: bolder;
 			}
 			>.state{

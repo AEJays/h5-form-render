@@ -197,7 +197,7 @@
 						let lastColor
 						if(this.typeList.some(x=>x.type === JSON.parse(title)[0])){
 							let value = this.typeList.find(x => x.type === JSON.parse(title)[0])
-							console.log(value)
+							// console.log(value)
 							firstColor = `rgb(${value.colour})`
 						}else{
 							firstColor = "#333"
@@ -212,14 +212,14 @@
 						
 					}else{
 						if (this.typeList.some(x => x.type === title)) {
-							// // console.log('typeList',this.typeList)s
+							// console.log('typeList',this.typeList)s
 						 const item = this.typeList.find(x => x.type === title)
 						 // console.log("item",item)
 						 color = `rgb(${item.colour})`
 						}
 					}
 					
-					console.log(color)
+					// console.log(color)
 				return color
 			},
 			handleClick (title) {

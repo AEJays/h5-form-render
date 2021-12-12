@@ -48,8 +48,8 @@
 			}
 		},
 		created() {
-			// // console.log("item",this.item)
-			// // console.log(this.icon[this.item.svg.icon])
+			// console.log("item",this.item)
+			// console.log(this.icon[this.item.svg.icon])
 		},
 		methods: {
 			_get (data, field, value) {
@@ -57,9 +57,9 @@
 			},
 			getVal(string){
 				string = "nav"+string.replace(string[0],string[0].toUpperCase())
-				// // console.log(string)
-				// // console.log(this.icon)
-				// // console.log(this.icon[string])
+				// console.log(string)
+				// console.log(this.icon)
+				// console.log(this.icon[string])
 				return this.icon[string]
 			},
 			getNavigationUrl (str) {

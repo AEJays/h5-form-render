@@ -143,7 +143,7 @@ export const cache=(key,value,seconds = 3600 *24)=>{
 		if (key && value) {
 			let expire = nowTime + Number(seconds);
 			uni.setStorageSync(key,JSON.stringify(value) + '|' +expire)
-			console.log('已经把' + key + '存入缓存,过期时间为' + expire)
+			// console.log('已经把' + key + '存入缓存,过期时间为' + expire)
 		} else if (key && !value) {
 			let val = uni.getStorageSync(key);
 			if (val) {
@@ -151,7 +151,7 @@ export const cache=(key,value,seconds = 3600 *24)=>{
 				let temp = val.split('|')
 				if (!temp[1] || temp[1] <= nowTime) {
 					uni.removeStorageSync(key)
-					console.log(key + '缓存已失效')
+					// console.log(key + '缓存已失效')
 					return '';
 				} else {
 					return JSON.parse(temp[0]);
@@ -184,7 +184,7 @@ export async function LoginDefault(){
 			let token;
 			token = res.data.encryptedData
 			uni.setStorageSync(globalConfig.tokenStorageKey,token)
-			console.log("设置token成功!")
+			// console.log("设置token成功!")
 		}
 	})
 }
@@ -192,10 +192,10 @@ export async function LoginDefault(){
 export function login(){
 	let auth;
 	let authCache = cache("auth")
-	console.log(authCache,"cache_auth")
+	// console.log(authCache,"cache_auth")
 	if(authCache!=null&&authCache!=undefined&&authCache!=""){
 		auth = authCache
-		console.log(auth)
+		// console.log(auth)
 	}else{
 		uni.login({
 			success(res) {
@@ -228,7 +228,7 @@ export function getUserProfile(){
 	let that = this
 	if(profile!=null&&profile.iv!=null){
 		userProfile = profile
-		console.log(profile)
+		// console.log(profile)
 	}else{
 		uni.showModal({
 			title:"申请",
@@ -243,7 +243,7 @@ export function getUserProfile(){
 						desc:"获取您的昵称、头像、地区及性别",
 						success(userProfile) {
 							uni.hideLoading()
-							console.log(userProfile)
+							// console.log(userProfile)
 							iv = userProfile.iv	
 							encryptedData = userProfile.encryptedData
 							let newRawData;

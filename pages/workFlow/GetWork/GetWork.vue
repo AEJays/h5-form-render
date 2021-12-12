@@ -39,15 +39,15 @@
 			uni.showLoading({
 				title:"加载中"
 			})
-			// // console.log("e",e)
+			// console.log("e",e)
 			let decode = JSON.parse(decodeURIComponent(e.query))
-			// // console.log("decode",decode)
-			// // console.log(e.id)
-			// // console.log(e.key)
+			// console.log("decode",decode)
+			// console.log(e.id)
+			// console.log(e.key)
 			this.getPageAapi = globalConfig.formHost + "?id=" + decode.id
 			this.key = decode.key
 			// if(e.selectId){
-			// 	// // console.log(111111)
+			// 	// console.log(111111)
 			// 	this.selectId = e.selectId
 			// 	// this.getValue(this.selectId)
 			// }
@@ -108,10 +108,10 @@
 				// 		userlist.name=list.name
 				// 		userlist.userId=list.userId
 				// 		_this.userlist = userlist
-				// 		// // console.log("thisListTo",_this.srvFormData)
-				// 		// // console.log("这里的api",_this.getPageAapi)
-				// 		// // console.log("这里的key",_this.key)
-				// 		// // console.log("这里的List",_this.srvFormData)
+				// 		// console.log("thisListTo",_this.srvFormData)
+				// 		// console.log("这里的api",_this.getPageAapi)
+				// 		// console.log("这里的key",_this.key)
+				// 		// console.log("这里的List",_this.srvFormData)
 				// 	}
 				// })
 			// }

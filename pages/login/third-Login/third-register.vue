@@ -103,7 +103,7 @@
 				})
 			},
 			setTitle(e){
-				// // console.log(e)
+				// console.log(e)
 				uni.setNavigationBarTitle({
 					title:e
 				})
@@ -132,6 +132,7 @@
 						username:that.username,
 						password:"hdty@2021",
 					}
+					uni.setStorageSync("isOneCompanyRegister",true)
 				}else if(Type==="STREET"){
 					that.data = {
 						app:that.query.app,
@@ -151,7 +152,7 @@
 						"content-Type":"application/x-www-form-urlencoded"
 					},
 					complete(data) {
-						// // console.log(data.data.code)
+						// console.log(data.data.code)
 						if(data.data.code===0){
 							// if(data.data.data){
 								uni.showLoading({
@@ -195,7 +196,7 @@
 							// 	// }
 							// }
 						}else{
-							// // console.log(data)
+							// console.log(data)
 							// if(Type==="COMPANY"){
 							// 	uni.showModal({
 							// 		showCancel:false,

@@ -24,9 +24,9 @@
 		methods:{
 			getVal(string){
 				string = "button"+string.replace(string[0],string[0].toUpperCase())
-				// // console.log(string)
-				// // console.log(this.icon)
-				// // console.log(this.icon[string])
+				// console.log(string)
+				// console.log(this.icon)
+				// console.log(this.icon[string])
 				return this.icon[string]
 			},
 			ReturnWork(url,query){

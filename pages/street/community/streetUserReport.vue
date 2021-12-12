@@ -49,7 +49,7 @@
 						Authorization:`Bearer ${uni.getStorageSync(globalConfig.tokenStorageKey)}`
 					},
 					success(res) {
-						console.log(res)
+						// console.log(res)
 							that.customValues = {
 								"streetName":res.data.data.name
 							}

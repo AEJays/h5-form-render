@@ -26,7 +26,7 @@
 		},
 		methods:{
 			Debug(item){
-				// // console.log()
+				// console.log()
 				item = item.replace(/src="/g, 'src="https://images.weserv.nl/?url=')
 				return item
 			}

@@ -22,7 +22,7 @@
 				this.requsetParam = query
 			// console.log('e.query = ',query)
 			}else {
-				console.error('获取请求参数异常')
+				// console.error('获取请求参数异常')
 			}
 		},
 		data() {

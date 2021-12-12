@@ -69,7 +69,7 @@
 				}
 			},
 			setTitle(e){
-				// // console.log(e)
+				// console.log(e)
 				uni.setNavigationBarTitle({
 					title:e
 				})

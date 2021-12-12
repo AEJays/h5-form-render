@@ -73,7 +73,7 @@
 			handleFocus () {
 				this.focus = true
 			}
-        }
+        },
     }
 </script>
 

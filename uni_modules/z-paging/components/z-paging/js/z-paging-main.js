@@ -768,7 +768,7 @@ export default {
 		//重新设置列表数据，调用此方法不会影响pageNo和pageSize，也不会触发请求。适用场景：当需要删除列表中某一项时，将删除对应项后的数组通过此方法传递给z-paging。(当出现类似的需要修改列表数组的场景时，请使用此方法，请勿直接修改page中:list.sync绑定的数组)
 		resetTotalData(data) {
 			if (data == undefined) {
-				console.error('[z-paging]方法resetTotalData参数缺失！');
+				// console.error('[z-paging]方法resetTotalData参数缺失！');
 				return;
 			}
 			this.isTotalChangeFromAddData = true;
@@ -837,7 +837,7 @@ export default {
 		//当使用页面滚动并且自定义下拉刷新时，请在页面的onPageScroll中调用此方法，告知z-paging当前的pageScrollTop，否则会导致在任意位置都可以下拉刷新
 		updatePageScrollTop(value) {
 			if (value == undefined) {
-				//console.error('[z-paging]updatePageScrollTop方法缺少参数，请将页面onPageScroll事件中的scrollTop传递给此方法');
+				//// console.error('[z-paging]updatePageScrollTop方法缺少参数，请将页面onPageScroll事件中的scrollTop传递给此方法');
 				return;
 			}
 			this.pageScrollTop = value;
@@ -895,7 +895,7 @@ export default {
 				this._scrollToTop();
 			}
 			if (!this.usePageScroll && this.useChatRecordMode) {
-				console.warn('[z-paging]使用聊天记录模式时，建议使用页面滚动，可将usePageScroll设置为true以启用页面滚动！！');
+				// console.warn('[z-paging]使用聊天记录模式时，建议使用页面滚动，可将usePageScroll设置为true以启用页面滚动！！');
 			}
 		},
 		//私有的处理服务端返回的数组方法
@@ -913,7 +913,7 @@ export default {
 				data = [];
 				let methodStr = isLocal ? 'setLocalPaging' : 'addData';
 				if (dataType !== '[object Undefined]') {
-					console.error(`[z-paging]:${methodStr}参数类型不正确，第一个参数类型必须为Array!`);
+					// console.error(`[z-paging]:${methodStr}参数类型不正确，第一个参数类型必须为Array!`);
 				}
 			}
 			if (this.refresherTriggered) {
@@ -1334,7 +1334,7 @@ export default {
 			this.refresherReachMaxAngle = true;
 			if (moveDistance < 0 && this.usePageScroll && this.loadingMoreEnabled && this.useCustomRefresher && this
 				.pageScrollTop === -1) {
-				console.error(
+				// console.error(
 					'[z-paging]usePageScroll为true并且自定义下拉刷新时必须引入mixin或在page滚动时通过调用z-paging组件的updatePageScrollTop方法设置当前的scrollTop'
 				)
 			}
@@ -1436,7 +1436,7 @@ export default {
 				if (scrollViewNode) {
 					const scrollViewTotalH = scrollViewNode[0].top + scrollViewNode[0].height;
 					if (scrollViewTotalH > this.systemInfo.windowHeight + 100) {
-						console.error(
+						// console.error(
 							'[z-paging]检测到z-paging的高度超出页面高度，这将导致滚动出现异常，请设置【:fixed="true"】或【确保z-paging有确定的高度(如果通过百分比设置z-paging的高度，请保证z-paging的所有父view已设置高度，同时确保page也设置了height:100%，如：page{height:100%}】，此时z-paging的百分比高度才能生效。详情参照demo或访问：https://ext.dcloud.net.cn/plugin?id=3935)'
 						);
 					}

@@ -39,7 +39,7 @@
 		},
 		onLoad(e) {
 			let decode = JSON.parse(decodeURIComponent(e.query))
-			// // console.log("子项",)
+			// console.log("子项",)
 			this.data.processDefineKey = decode.processDefineKey
 			this.data.taskId = decode.taskId
 			this.config.url="/pages/companyConfirm/companyConfirm?query="+e.query

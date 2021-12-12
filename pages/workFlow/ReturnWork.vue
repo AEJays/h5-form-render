@@ -10,9 +10,11 @@
 		   :API="getPageAapi"
 			 :srvFormData="list"
 			 processDefineKey="fg"
-			 hideConfirm="true"
+			 :hideConfirm="true"
 			 :company="true"
 			 hideLast="true"
+			 :nextUrl="nextUrl"
+			 :nextText="nextText"
 			 :ConfirmConfig="ConfirmConfig"
 		/>
 	</view>
@@ -38,7 +40,12 @@
 			// console.log("companyInfo",this.list)
 		},
 		onLoad (e){
-			
+			// console.log(e)
+			if(e.next){
+				this.nextText = "下一步",
+				this.nextUrl = e.next+"?id=53125"
+				// console.log(this.nextUrl,"returnWork")
+			}
 		},
 		onUnload(e) {
 			// console.log("unload",e)
@@ -55,7 +62,9 @@
 				api: globalConfig.formHost + '?id=66000',
 				ConfirmConfig:{
 					
-				}
+				},
+				nextText:null,
+				nextUrl:null
 			}
 		},
 		created() {

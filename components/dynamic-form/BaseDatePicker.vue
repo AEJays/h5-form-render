@@ -23,6 +23,10 @@
 			  @cancel="handleShowPicker(false)"
 			/>
 		</van-popup>
+		<view class="base-date-picker-button-box" v-if="(!param.readonly&&!param.disabled)&&param.hasButton">
+			<van-button class="base-date-picker-button" type="primary" size="small" @click="handleChange('无固定期限')">无固定期限</van-button>
+			<van-button class="base-date-picker-button" type="primary" size="small" @click="handleChange('长期')">长期</van-button>
+		</view>
 	</view>
 </template>
 
@@ -59,6 +63,9 @@
 			// console.log("TIME",this.time)
 		},
 	    methods: {
+				handleChange(value){
+					this.$emit('confirm', value)
+				},
 				// 是否存在
 				isBuild(){
 					let isShow 
@@ -94,7 +101,7 @@
 					}else{
 						time = y + "/" + m + "/" + d
 					}
-					// // console.log()
+					// console.log()
 					return time;
 			},
 			showTime () {
@@ -130,4 +137,15 @@
 <style lang="less">
 	@import "./common.less";
 	.base_date_picker_containe {}
+	.base-date-picker-button-box{
+    position: relative;
+		border-bottom: 1px solid #F5F6F7;
+    /* margin-left: 5px; */
+    display: flex;
+    justify-content: flex-end;
+	}
+	.base-date-picker-button{
+    font-size: 10px;
+    margin:5px;
+	}
 </style>

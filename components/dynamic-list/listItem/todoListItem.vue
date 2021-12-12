@@ -33,7 +33,7 @@
 		methods:{
 			getVal(string){
 				string = "type"+string.replace(string[0],string[0].toUpperCase())
-				// // console.log(this.iconList[string])
+				// console.log(this.iconList[string])
 				return this.iconList[string]
 			},
 			DateToString(val){

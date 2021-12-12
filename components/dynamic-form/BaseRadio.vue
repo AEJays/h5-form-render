@@ -77,7 +77,7 @@
                this.$emit("change", e.detail)
             },
 						readonly(){
-							console.log(this.param.readonly)
+							// console.log(this.param.readonly)
 							if(this.param.readonly){
 								this.isReadOnly = true
 							}else if(this.param.disabled){

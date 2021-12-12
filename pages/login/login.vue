@@ -80,7 +80,7 @@
 						"code":"B080060"
 					},
 					complete(res) {
-						// // console.log(res)
+						// console.log(res)
 						if(res.data.data){
 							uni.showToast({
 								title:"解除绑定成功",
@@ -99,7 +99,7 @@
 						"userId":"73"
 					},
 					complete(res) {
-						// // console.log(res)
+						// console.log(res)
 						if(res.data.data){
 							uni.showToast({
 								title:"解除绑定成功",
@@ -118,7 +118,7 @@
 						"userId":"73"
 					},
 					complete(res) {
-						// // console.log(res)
+						// console.log(res)
 						if(res.data.data){
 							uni.showToast({
 								title:"解除绑定成功",
@@ -195,7 +195,7 @@
 									title:"登陆成功"
 								})
 							}
-							// // console.log(res.data)
+							// console.log(res.data)
 							token = res.data.encryptedData
 							uni.setStorageSync(globalConfig.tokenStorageKey,token)
 				  },

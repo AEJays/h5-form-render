@@ -40,10 +40,10 @@
 			options:Object
 		},
 		created() {
-			// // console.log(this.item)
+			// console.log(this.item)
 			this.getCustomData()
 			this.icon = globalConfig.icon
-			// // console.log(this.custom)
+			// console.log(this.custom)
 		},
 		data(){
 			return {

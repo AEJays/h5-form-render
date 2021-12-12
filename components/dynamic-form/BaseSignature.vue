@@ -149,7 +149,7 @@
 					this.userType = uni.getStorageSync("userType")
 					this.icon = globalConfig.icon
 					this.userInfo = uni.getStorageSync(globalConfig.userInfo)
-					console.log(this.userInfo)
+					// console.log(this.userInfo)
 				},
         props: {
             param: {
@@ -228,7 +228,7 @@
 							},
 							method:"POST",
 							success(res) {
-								console.log("成功",res)
+								// console.log("成功",res)
 								that.hideWriteHistory()
 								that.password = null
 							}
@@ -254,7 +254,7 @@
 							},
 							method:"POST",
 							success(res){
-								console.log(res)
+								// console.log(res)
 								if(res.data.code == 0){
 									that.isRight = null
 									that.$emit("change",res.data.data.url)
@@ -297,11 +297,11 @@
 							method:"GET",
 							success(res) {
 								uni.hideLoading()
-								console.log(res)
+								// console.log(res)
 								if(res.data.code===0){
 										// console.log(res.data.data.records)
 										that.signlist.push(...res.data.data.records)
-										console.log(that.signlist)
+										// console.log(that.signlist)
 										that.showHistory = true
 										that.total = res.data.data.total
 								}else{
@@ -422,7 +422,7 @@
                 	y: 0,
                 	canvasId: 'signature_canvas',
                 	success: (resp) => {
-										// // console.log("生成图片",resp)
+										// console.log("生成图片",resp)
 										// pathToBase64(resp.tempFilePath).then(url => {
 										// 	this.$emit('change', url)
 										// 	this.showModal = false

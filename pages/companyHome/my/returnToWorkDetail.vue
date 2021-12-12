@@ -93,8 +93,8 @@
 				})
 			},
 			getConfig(){
-				// // console.log(this.data)
-				// // console.log(this.method)
+				// console.log(this.data)
+				// console.log(this.method)
 				let that = this
 				uni.request({
 					url:this.loadApi,
@@ -102,9 +102,9 @@
 					data:this.data,
 					header:this.header,
 					complete(res) {
-						// // console.log(res)
+						// console.log(res)
 						if(res.data.code === "00000"){
-							// // console.log(res)
+							// console.log(res)
 							let form = res.data.data.form
 							let data = res.data.data.formData
 							that.formData = data
@@ -135,8 +135,8 @@
 									"taskId":that.taskId
 								}
 							}
-							// // console.log(form)
-							// // console.log("enforcementSeq",res.data.data.customValues.fileseq)
+							// console.log(form)
+							// console.log("enforcementSeq",res.data.data.customValues.fileseq)
 							// that.processDefineKey ={
 							// 	"processDefineKey":res.data.data.processDefineKey,
 							// 	"fileno":res.data.data.customValues.fileno,
@@ -147,7 +147,7 @@
 							let jsonDefine = form.jsonDefine
 							that.config = convert(JSON.parse(Base64.decode(jsonDefine)))
 							// console.log(that.processDefineKey)
-							// // console.log(that.config)
+							// console.log(that.config)
 							that.getConfim(that.piId)
 						}
 					}
@@ -185,7 +185,7 @@
 				query = { ...JSON.parse(decodeURIComponent(e.query)) }
 				this.requsetParam =  query
 			}else {
-				console.error('获取请求参数异常')
+				// console.error('获取请求参数异常')
 			}
 		},
 		data() {

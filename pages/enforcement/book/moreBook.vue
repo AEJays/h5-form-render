@@ -97,8 +97,8 @@
 				})
 			},
 			getConfig(){
-				// // console.log(this.data)
-				// // console.log(this.method)
+				// console.log(this.data)
+				// console.log(this.method)
 				let that = this
 				uni.request({
 					url:this.loadApi,
@@ -106,14 +106,14 @@
 					data:this.data,
 					header:this.header,
 					complete(res) {
-						// // console.log(res)
+						// console.log(res)
 						if(res.data.code === "00000"){
-							// // console.log(res)
+							// console.log(res)
 							let form = res.data.data.form
 							let data = res.data.data.formData
 							that.formData = data
-							// // console.log(form)
-							// // console.log("enforcementSeq",res.data.data.customValues.fileseq)
+							// console.log(form)
+							// console.log("enforcementSeq",res.data.data.customValues.fileseq)
 							if(res.data.data.customValues){
 								if(res.data.data.customValues.fileno){
 									that.processDefineKey ={
@@ -146,7 +146,7 @@
 							that.config = convert(JSON.parse(Base64.decode(jsonDefine)))
 							// console.log(that.processDefineKey)
 							that.getConfim(that.piId)
-							// // console.log(that.config)
+							// console.log(that.config)
 						}
 					}
 				})

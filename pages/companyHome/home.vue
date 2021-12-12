@@ -125,6 +125,7 @@
 			this.icon=globalConfig.icon
 			uni.hideHomeButton()
 			this.getList()
+			this.isOnceBinding()
 		},
 		onLoad (e){
 			let query = JSON.parse(decodeURIComponent(e.query))
@@ -142,8 +143,36 @@
 			}
 		},
 		methods:{
+			// 是否初次绑定
+			isOnceBinding(){
+				let isOne = uni.getStorageSync("isOneCompanyRegister")
+				// console.log(isOne,"isOne")
+				if(!isOne){
+				}else{
+					uni.showModal({
+						title:"是否初次上报？",
+						cancelText:"否",
+						confirmText:"去上报",
+						success(button){
+							if(button.confirm){
+								uni.navigateTo({
+									url:`/pages/companyHome/selfCheck/index?next=${encodeURIComponent(`/pages/workFlow/ReturnWork?next=/pages/defaultPage/defaultPage`)}`,
+									fail(err){
+										// console.log(err)
+									}
+								})
+							}else{
+								uni.removeStorageSync("isOneCompanyRegister")
+							}
+						},
+						fail(err){
+							// console.log(err)
+						}
+					})
+				}
+			},
 			onChange(event) {
-				// // console.log('event = ', event.detail)
+				// console.log('event = ', event.detail)
 				this.current = event.detail
 				this.getList()
 			},
@@ -153,7 +182,7 @@
 					url:`${globalConfig.dataHost}?id=5555`,
 					method:"GET",
 					success(res) {
-						// // console.log("res",res)
+						// console.log("res",res)
 						that.list = res.data.data.list
 					}
 				})

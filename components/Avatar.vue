@@ -62,7 +62,7 @@
 			theme:String
 		},
 		mounted() {
-			// // console.log(this.theme)
+			// console.log(this.theme)
 			if(this.theme==="company"){
 				// console.log(this.companyList)
 				this.companyList = globalConfig.companyInfo
@@ -92,7 +92,7 @@
 			// 二维码地址
 			getQrUrl(){
 				this.url = `${globalConfig.workflowEP}/api.webapp/invQrCode/${this.companyList.licenceNo}/Mes`
-				console.log(this.url)
+				// console.log(this.url)
 				if(this.url){
 					this.showQrcode();//一加载生成二维码
 				}
@@ -113,7 +113,7 @@
 								Authorization: `Bearer ${uni.getStorageSync(globalConfig.tokenStorageKey)}`
 						},
 						success(res) {
-							// // console.log(res.data.data.sysUser.personNo)
+							// console.log(res.data.data.sysUser.personNo)
 							that.code = res.data.data.sysUser.personNo
 						}
 					})
@@ -125,7 +125,7 @@
 								Authorization: `Bearer ${uni.getStorageSync(globalConfig.tokenStorageKey)}`
 						},
 						success(res) {
-							// // console.log(res.data.data.sysUser.personNo)
+							// console.log(res.data.data.sysUser.personNo)
 							that.code = res.data.data.sysUser.personNo
 						}
 					})

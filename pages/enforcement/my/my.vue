@@ -26,8 +26,8 @@
 		},
 		created() {
 			this.icon = globalConfig.icon
-			// // console.log("list",this.list)
-			// // console.log("icon",this.icon[this.list.icon])
+			// console.log("list",this.list)
+			// console.log("icon",this.icon[this.list.icon])
 		},
 		mounted() {
 			

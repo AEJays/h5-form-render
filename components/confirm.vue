@@ -119,18 +119,18 @@
 		},
 		mounted() {
 			// console.log("noCommit",this.noCommit)
-			// // console.log("confimKey",this.LastKey)
-			// // console.log("FormDATA",this.formData)
-			// // console.log("userInfo",globalConfig.userInfo)
+			// console.log("confimKey",this.LastKey)
+			// console.log("FormDATA",this.formData)
+			// console.log("userInfo",globalConfig.userInfo)
 			this.username=uni.getStorageSync(globalConfig.userInfo).username
-			// // console.log("PIID",this.piId)
+			// console.log("PIID",this.piId)
 		},
 		methods:{
 			// getFormData(){
 			// 	// console.log("FormDATA",this.formData)
 			// },
 			isShowList(){
-				// // console.log("SHOWLIST",this.showList)
+				// console.log("SHOWLIST",this.showList)
 				if(this.showList===true){
 					this.text="收起"
 				}else{
@@ -187,7 +187,7 @@
 			    return data
 			},
 			GetAgree(openType){
-				console.log(this.processDefineKey)
+				// console.log(this.processDefineKey)
 				const list = this.fields
 				        this.fields = [...this.handleRecursive(list)]
 				let isPass = true
@@ -219,8 +219,8 @@
 				uni.showLoading({
 					title:"提交中"
 				})
-				// // console.log(value);
-				// // console.log(this.comment)
+				// console.log(value);
+				// console.log(this.comment)
 				// console.log("KEY",this.LastKey.applyUserName)
 				let pages = getCurrentPages()
 				let page = pages[0]
@@ -228,6 +228,7 @@
 				let header = {
 					Authorization:token
 				}
+				// console.log("confirm")
 				let url = `${globalConfig.workflowEP}/api.flow.examine/complete`
 				let data;
 				if(this.userlist){
@@ -262,7 +263,7 @@
 					}
 				}
 				// console.log("JUMP",this.jumpUrl)
-				// // console.log(data)
+				// console.log(data)
 				let allName = uni.getStorageSync("allName")
 				if(allName.length>0&&Array.isArray(allName)){ //初始化表单
 					allName.map((item,i)=>{
@@ -276,7 +277,7 @@
 					method:this.config.method||"POST",
 					complete(res) {
 						if(res.data.code==="00000"){
-							// // console.log(page)
+							// console.log(page)
 							// uni.reLaunch({
 							// 	url:page.$page.fullPath,
 							// 	fail(e) {
@@ -315,8 +316,8 @@
 				})
 			},
 		// 	GetRefuse(){
-		// 		// // console.log(value);
-		// 		// // console.log(this.comment)
+		// 		// console.log(value);
+		// 		// console.log(this.comment)
 		// 		let pages = getCurrentPages()
 		// 		let page = pages[0]
 		// 		let token = uni.getStorageSync(globalConfig.tokenStorageKey)
@@ -336,7 +337,7 @@
 		// 			"comment":this.comment,
 		// 			"taskId":this.LastKey.taskId
 		// 		}
-		// 		// // console.log(data)
+		// 		// console.log(data)
 		// 		uni.request({
 		// 			header:header,
 		// 			url:url,

@@ -51,7 +51,7 @@
 					Object.values(json).map((item,i)=>{
 						if(typeof item === "string"){
 							if(item.indexOf(field)!=-1){
-								// // console.log(item,"ITEM")
+								// console.log(item,"ITEM")
 								keyword = field
 								if(keyword !== ""){
 									if(that.str.indexOf(keyword)===-1){
@@ -81,36 +81,53 @@
 					title:"识别中"
 				})
 				uni.uploadFile({
-					url: globalConfig.YyzzEP + '/executive/companyattachment/ocr/licence',
-					filePath: file.url,
-					name: "file",
-					header: this.header,
-					formData: data,
-					success: (res) => {
-						if(res.statusCode == 200){
-							const jsonObject = this.strToJson(res.data)
-							// console.log('返回数据 = ', jsonObject)
-							// uni.request({
-							// 	url: globalConfig.
-							// })
-							uni.request({
-								url:globalConfig.formHost + "?id=96623",
-								success(res){
-									let keywordGroup = res.data.data.keyWordGroup
-									keywordGroup.map((keyword,key)=>{
-										that.hasField(jsonObject.data,keyword)
-									})
-								}
-							})
-							this.$emit('getValue',jsonObject.data)
-							uni.hideLoading()
-						}
+					url:globalConfig.workflowEP + "/api/fs/uploadfile",
+					header:{
+						Authorization:`Bearer ${uni.getStorageSync(`${globalConfig.tokenStorageKey}`)}`
 					},
-					fail:(err) =>{
-						uni.hideLoading()
-						// console.log('操作失败 = ', err)
-						uni.showModal({
-							title:err.errMsg
+					filePath:file.url,
+					name:"file",
+					success(theUpload){
+						let uploadData = JSON.parse(theUpload.data).data.url
+						// console.log(uploadData)
+						uni.uploadFile({
+							url: globalConfig.YyzzEP + '/executive/companyattachment/ocr/licence',
+							filePath: file.url,
+							name: "file",
+							header: that.header,
+							formData: data,
+							success: (res) => {
+								if(res.statusCode == 200){
+									const jsonObject = that.strToJson(res.data)
+									console.log('返回数据 = ', jsonObject)
+									// uni.request({
+									// 	url: globalConfig.
+									// })
+									uni.request({
+										url:globalConfig.formHost + "?id=96623",
+										success(res){
+											let keywordGroup = res.data.data.keyWordGroup
+											keywordGroup.map((keyword,key)=>{
+												that.hasField(jsonObject.data,keyword)
+											})
+										}
+									})
+									let value = {
+										...jsonObject.data,
+										"licenseImage":globalConfig.workflowEP+uploadData
+									}
+									// console.log(value)
+									that.$emit('getValue',jsonObject.data)
+									uni.hideLoading()
+								}
+							},
+							fail:(err) =>{
+								uni.hideLoading()
+								// console.log('操作失败 = ', err)
+								uni.showModal({
+									title:err.errMsg
+								})
+							}
 						})
 					}
 				})

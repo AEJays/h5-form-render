@@ -197,7 +197,7 @@
 						this.fetchList({ refresh: true })
 					}
 				},5000)
-				console.log(this.Time)
+				// console.log(this.Time)
 		 } else {
 			 if (this.isPropsList) {
 				this.list = _.cloneDeep(this.config.list)

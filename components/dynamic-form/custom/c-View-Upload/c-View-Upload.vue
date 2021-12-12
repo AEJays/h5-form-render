@@ -179,7 +179,7 @@
 			handleDelete(i){
 				this.fileList.splice(i,1)
 				this.showAdd = true
-				// // console.log(this.fileList),
+				// console.log(this.fileList),
 				this.$emit("change",JSON.stringify(this.fileList))
 			},
 			// 上传函数 直接调用即可
@@ -207,8 +207,8 @@
 										if(typeof webPath.data==="string"){
 											newPath = JSON.parse(webPath.data)
 										}
-										// // console.log(newPath)
-										// // console.log(globalConfig.workflowEP,newPath.data.url)
+										// console.log(newPath)
+										// console.log(globalConfig.workflowEP,newPath.data.url)
 										if(newPath.code === 200){
 											let newFilePath = globalConfig.workflowEP + newPath.data.url
 											// console.log(newFilePath)
@@ -221,7 +221,7 @@
 												}
 											}
 											fileList.push({url:newFilePath,hide:false})
-											// // console.log(fileList)
+											// console.log(fileList)
 											that.fileList = fileList
 										}
 										that.$emit("change",JSON.stringify(that.fileList))

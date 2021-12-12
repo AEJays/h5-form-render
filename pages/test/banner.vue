@@ -44,15 +44,15 @@
 					let moduleData;
 					let banners;
 					this.config = _.cloneDeep(_.get(res, 'data', {}))
-					// // console.log(this.config)
+					// console.log(this.config)
 					modules = _.get(this.config,'modules',{})
 					key = _.get(modules[0],'key','')
 					moduleData = _.get(_.get(this.config,'moduleData',{}),key,{})
 					banners = _.get(moduleData,'banners',{})
 					this.item = banners
 					this.moduleData = moduleData
-					// // console.log(this.item)
-					// // console.log(this.moduleData)
+					// console.log(this.item)
+					// console.log(this.moduleData)
 				}
 			},
 			async fetchNavData(){
@@ -66,7 +66,7 @@
 					let style;
 					let title;
 					this.config = _.cloneDeep(_.get(res, 'data', {}))
-					// // console.log(this.config)
+					// console.log(this.config)
 					modules = _.get(this.config,'modules',{})
 					key = _.get(modules[1],'key','')
 					moduleData = _.get(_.get(this.config,'moduleData',{}),key,{})
@@ -80,8 +80,8 @@
 					this.cardTitle = title
 					// console.log(this.cardStyle)
 					// console.log(this.cardTitle)
-					// // console.log(this.NavItem)
-					// // console.log(this.NavData)
+					// console.log(this.NavItem)
+					// console.log(this.NavData)
 			}
 		}
 		},

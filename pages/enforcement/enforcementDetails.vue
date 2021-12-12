@@ -30,7 +30,7 @@
 		},
 		onLoad(e) {
 			// let query = Base64.decode(e.query)
-			// // console.log(query)
+			// console.log(query)
 			// ModelData = this.getList(e.id)
 			uni.showLoading({
 				title:"加载中"
@@ -38,8 +38,8 @@
 			// console.log(e.id)
 			this.getValue(e.id)
 			// this.data = Modeldata
-			// // console.log("md",Modeldata)
-			// // console.log("this",this.data)
+			// console.log("md",Modeldata)
+			// console.log("this",this.data)
 			// this.getValue(e.id)
 		},
 		methods:{
@@ -52,10 +52,10 @@
 							Authorization: `Bearer ${uni.getStorageSync(globalConfig.tokenStorageKey)}`
 					},
 					complete(res) {
-						// // console.log(res)
+						// console.log(res)
 						that.data = res.data.data
 						uni.hideLoading()
-						// // console.log("data",res.data.data)
+						// console.log("data",res.data.data)
 					}
 				})
 			}
@@ -67,7 +67,7 @@
 			// },
 			// async getList(id){
 			// 	let res = await getSearchALL(id)
-			// 	// // console.log(res)
+			// 	// console.log(res)
 			// 	let data = res.data
 			// 	// console.log("data",res.data)
 			// 	Modeldata =  data

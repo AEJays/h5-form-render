@@ -22,7 +22,7 @@
 		},
 		onLoad(e) {
 			let query = JSON.parse(decodeURIComponent(e.query))
-			console.log(query,"QUERY")
+			// console.log(query,"QUERY")
 			this.srvFormData = query
 		}
 	}

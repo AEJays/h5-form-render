@@ -40,7 +40,7 @@
 				this.dynamicLoadUrl =  globalConfig.dataHost + '?id=' + e.id
 				this.initData(e.id);
 			}else {
-				console.error('获取id异常')
+				// console.error('获取id异常')
 			}
 		},
 		data() {

@@ -135,7 +135,7 @@
             },
 						async fetchSearchList(data){
 							uni.showLoading({ title: 'loading...', mask:true })
-											// // console.log(this.currentType)
+											// console.log(this.currentType)
 											// if(this.search===""){
 											// 	this.search = null
 											// }
@@ -158,7 +158,7 @@
             
 			async fetchList (data) {
                 uni.showLoading({ title: 'loading...', mask:true })
-								// // console.log(this.currentType)
+								// console.log(this.currentType)
 								let searchList = this.search?{
 									name:this.search
 								}:{}
