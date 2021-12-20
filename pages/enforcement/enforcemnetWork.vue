@@ -172,6 +172,7 @@
 						srvFormData.checkOno = FormNo.data
 						_this.srvFormData = srvFormData
 						_this.customValues.companyName = list.name
+						_this.customValues.operationName=list.operationName
 						_this.customValues.companyId = list.userId
 						
 						userlist.name=list.name

@@ -31,6 +31,8 @@
 					"companyType":companyInfo.type,
 					"businessLicense":companyInfo.licenceNo,
 					"companyLegalPerson":companyInfo.personName,
+					"streetId":companyInfo.streetId,
+					"operationName":companyInfo.operationName,
 					"companyPhone":companyInfo.personPhone,
 					"companyAddress":companyInfo.address
 				}

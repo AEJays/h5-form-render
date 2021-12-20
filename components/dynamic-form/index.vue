@@ -704,6 +704,9 @@
                       if (x['__vModel__'] === item['__vModel__']) {
 						  const formType = _.get(x, '__config__.tag') 
                           x.error = _.get(x, '__config__.required') ? !e : false
+													if(["el-switch"].includes(formType)){
+														x.error = false
+													}
                           if (['el-upload', 'el-checkbox-group', 'el-multiple-modal-select'].includes(formType)) {
                              x.error = _.get(x, '__config__.required') ? (!e || e.length === 0) : false
                           }
@@ -914,6 +917,7 @@
 										"companyLegalPerson":globalConfig.companyInfo.legalRepresentative||globalConfig.companyInfo.personName,
 										"companyPhone":globalConfig.companyInfo.personPhone,
 										"businessLicense":globalConfig.companyInfo.licenceNo,
+										"operationName":globalConfig.companyInfo.operationName,
 										"selfType":this.form["selfType"],
 										"reportStatus":this.form["reportStatus"]
 									}
