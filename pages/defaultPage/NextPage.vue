@@ -40,10 +40,11 @@
 			})
 			// console.log("e",e)
 			this.taskId=e.taskId
-			let decode = JSON.parse(decodeURIComponent(e.query))
+			let decode = e.query?JSON.parse(decodeURIComponent(e.query)):e
 			// console.log("decode",decode)
 			// console.log(e.id)
 			// console.log(e.key)
+			let companyInfo = uni.getStorageSync("companyInfo")
 			this.getPageAapi = globalConfig.formHost + "?id=" + decode.id
 			this.key = decode.lastKey
 			if(e.selectId){
@@ -51,6 +52,9 @@
 				this.selectId = e.selectId
 				this.getValue(this.selectId)
 				// console.log("有执行到这",this.getPageAapi,this.key)
+			}else if(companyInfo.id){
+				this.selectId = companyInfo.id
+				this.getValue(this.selectId)
 			}
 			if(!this.getPageAapi||!this.key){
 				// console.log("加载失败")
@@ -171,9 +175,12 @@
 						_this.customValues.companyName = list.name
 						_this.customValues.operationName=list.operationName
 						_this.customValues.companyId = list.userId
-						userlist.name=list.name
-						userlist.userId=list.userId
-						_this.userlist = userlist
+						let type = uni.getStorageSync("userType")
+						if(type != "4"){
+							userlist.name=list.name
+							userlist.userId=list.userId
+							_this.userlist = userlist
+						}
 						// console.log("thisListTo",_this.srvFormData)
 						// console.log("这里的api",_this.getPageAapi)
 						// console.log("这里的key",_this.key)

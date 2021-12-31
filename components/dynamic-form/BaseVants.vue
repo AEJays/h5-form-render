@@ -240,6 +240,12 @@
 						}"
 						      @change="(e) => handleSetValue(e, fields[index])"
 						 />
+						 <base-tips
+							v-if="_get(item,'__config__.tag') === 'tips'"
+							:param="{
+								...getBaseParam(item),
+							}"
+						 ></base-tips>
        </block>
     </view>
 </template>
@@ -257,6 +263,7 @@
 	import BaseDatePicker from './BaseDatePicker.vue'
 	import BaseRate from './BaseRate.vue'
 	import BaseUpload from './BaseUpload.vue'
+	import BaseTips from './BaseTips.vue'
 	import cImage from './custom/c-image.vue'
 	import cVideo from './custom/c-video.vue'
 	import CRichText from './custom/c-rich-text.vue'
@@ -281,6 +288,7 @@
 		   BaseDatePicker,
 		   BaseRate,
 		   BaseUpload,
+			 BaseTips,
 		   cImage,
 		   cVideo,
 		   // cSelectList,
@@ -405,7 +413,8 @@
 									..._.has(item, 'maxlength') ? { maxlength: item.maxlength } : {},
 									..._.has(item, 'prefix-icon') ? { 'left-icon': item['prefix-icon'] } : {},
 									..._.has(item, 'suffix-icon') ? { 'right-icon': item['suffix-icon'] } : {},
-									..._.has(item, 'show-word-limit') ? { 'show-word-limit': item['show-word-limit'] } : {}
+									..._.has(item, 'show-word-limit') ? { 'show-word-limit': item['show-word-limit'] } : {},
+									..._.has(item,'multiple')?{'multiple':item['multiple']}:{}
 							 }
 							}
 							// console.log(this.fields)

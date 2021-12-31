@@ -216,10 +216,10 @@
 			},
 			save(){
 				this.show = false
-				uni.pageScrollTo({
-					scrollTop: 0, 
-					duration: 300	
-				});
+				// uni.pageScrollTo({
+				// 	scrollTop: 0, 
+				// 	duration: 300	
+				// });
 			},
 			clear(){
 				this.content = null

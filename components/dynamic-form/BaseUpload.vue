@@ -18,6 +18,7 @@
 					:max-count="param['max-count'] || 9007199254740992"
 					:deletable="param.deletable === false ? false : true"
 									:accept="param.accept || 'image'"
+									:multiple="param.multiple"
 									@after-read="handleAfterRead"
 									@delete="handleDelete"
 									v-if="param.accept !== 'file'"
@@ -27,6 +28,7 @@
 									:file-list="fileList"
 									:max-count="param['max-count'] || 9007199254740992"
 									:deletable="param.deletable === false ? false : true"
+									:multiple="param.multiple"
 									:accept="param.accept || 'image'"
 									@after-read="handleAfterRead"
 							>
@@ -37,7 +39,7 @@
 			</view>
 			<view v-if="param.readonly" class="Detail-Box" >
 				<view class="label"><span style="color: red;" v-if="param.required">*</span>{{param.label}}</view>
-				<view class="image-Box" v-if="param.value">
+				<view class="image-Box" v-if="param.value&&whatType(param.accept)==='image'">
 					<view v-for="(item,i) in JSON.parse(param.value)" :key="i">
 						<img :src="item.url||icon.empty" mode="aspectFit" @click="handleWatch(i)" :style="{width:'80px',height:'80px','z-index':'0'}" class="Detail-image" />
 						<img :src="item.url||icon.empty" v-if="isShow==i" mode="aspectFit" @click="hideWatch()" :style="{width:'auto',height:'auto',position:'fixed',top:0,left:0,right:0,bottom:0,'z-index':'10000'}"/>
@@ -45,10 +47,21 @@
 					</view>
 
 				</view>
-				<view class="image-Box" v-if="!param.value">
+				<view class="image-Box" v-if="!param.value&&whatType(param.accept)==='image'">
 						<img :src="item.url||icon.empty" mode="aspectFit" @click="handleWatch(0)" :style="{width:'80px',height:'80px','z-index':'0'}" class="Detail-image" />
 						<img :src="item.url||icon.empty" v-if="isShow==0" mode="aspectFit" @click="hideWatch()" :style="{width:'auto',height:'auto',position:'fixed',top:0,left:0,right:0,bottom:0,'z-index':'10000'}"/>
 						<view style="width: auto;height: auto;top: 0;left: 0;right: 0;bottom: 0;position: fixed;z-index: 9999; background-color: #AAAAAA;" @click="isShow===null" v-if="isShow===0"></view>
+				</view>
+				<view class="video-Box" v-if="param.value&&whatType(param.accept)==='video'">
+					<view v-for="(item,i) in JSON.parse(param.value)">
+						<video :src="item.url" :key='i' class="video-Box-video" @click="handleVideo(item.url)"></video>
+					</view>
+					<view class="video-BigBox" v-if="![null,undefined,''].includes(videoUrl)">
+						<video :src="videoUrl" class="video-Box-Big-video"></video>
+						<view @click="handleClearVideo" class="video-Box-Big-iconBox">
+							<image :src="icon.modalExit" class="video-Box-Big-icon"></image>
+						</view>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -83,7 +96,8 @@
               fileList: [],
 							icon:null,
 							big:false,
-							isShow:null
+							isShow:null,
+							videoUrl:null
           }  
         },
         watch: {
@@ -105,6 +119,31 @@
             }
 		},
         methods: {
+					// 点击视频时触发事件
+					handleVideo(url){
+						this.videoUrl = url
+					},
+					// 清除视频
+					handleClearVideo(){
+						this.videoUrl = undefined
+						this.$forceUpdate()
+					},
+					// 是否为图片
+					whatType(accept){
+						if(!accept){
+								return 'image'
+						}else{
+							if(accept.indexOf('Image')!==-1){
+								return 'image'
+							}else if(accept.indexOf('media')!==-1){
+								return 'video'
+							}else if(accept.indexOf('video')!==-1){
+								return 'video'
+							}else{
+								return 'file'
+							}
+						}
+					},
 					// 关闭
 					hideWatch(){
 						this.isShow = null
@@ -137,41 +176,51 @@
             },
             handleAfterRead (event) {
                 const { file } = event.detail
-                uni.uploadFile({
-                    url: globalConfig.workflowEP + '/api/fs/uploadfile',
-										header:{
-											Authorization:`Bearer ${uni.getStorageSync(`${globalConfig.tokenStorageKey}`)}`
-										},
-                    filePath: file.url,
-                    name: 'file',
-                    success: (res) => {
-                        const list = this.fileList
-												let Resdata = JSON.parse(res.data)
-												let resUrl = Resdata.data
-            //             // const resUrl = res.data.data.substr(0, 5).includes('http') ? res.data.data :  globalConfig.workflowEP + res.data.data
-												// console.log("resUrl",resUrl)
-												// console.log("list",list)
-												// console.log()
-                        if (_.has(this.param, 'accept') && this.param.accept === 'file') {
-                            const index = resUrl.lastIndexOf('.')
-                            const str = resUrl.substr(index + 1)
-                            if (['png', 'jpg', 'jpeg', 'bmp', 'gif', 'psd', 'svg'].some(x => resUrl.includes(x))) {
-                                this.fileList.push({ url: globalConfig.workflowEP+resUrl.url })
-                            } else {
-                                this.fileList.push({ url: globalConfig.workflowEP+resUrl.url, name: resUrl.name })
-                            }
-                        } else {
-                            this.fileList.push({ url: globalConfig.workflowEP+resUrl.url })
-                        }
-                        // this.fileList = [...list]
-												// console.log("fileList",this.fileList)
-                        this.$emit('change', JSON.stringify(this.fileList))
-                    },
-										fail(e) {
-											// console.log("error",e)
+								if(!this.param.multiple){
+									this.handleUpload(file)
+								}else{
+									let that = this
+									file.map((itemFile,f)=>{
+											that.handleUpload(itemFile)
+									})
+								}
+            },
+						handleUpload(file){
+							uni.uploadFile({
+								url: globalConfig.workflowEP + '/api/fs/uploadfile',
+								header:{
+									Authorization:`Bearer ${uni.getStorageSync(`${globalConfig.tokenStorageKey}`)}`
+								},
+								filePath: file.url,
+								name: 'file',
+								success: (res) => {
+										const list = this.fileList
+										let Resdata = JSON.parse(res.data)
+										let resUrl = Resdata.data
+				//             // const resUrl = res.data.data.substr(0, 5).includes('http') ? res.data.data :  globalConfig.workflowEP + res.data.data
+										// console.log("resUrl",resUrl)
+										// console.log("list",list)
+										// console.log()
+										if (_.has(this.param, 'accept') && this.param.accept === 'file') {
+												const index = resUrl.lastIndexOf('.')
+												const str = resUrl.substr(index + 1)
+												if (['png', 'jpg', 'jpeg', 'bmp', 'gif', 'psd', 'svg'].some(x => resUrl.includes(x))) {
+														this.fileList.push({ url: globalConfig.workflowEP+resUrl.url })
+												} else {
+														this.fileList.push({ url: globalConfig.workflowEP+resUrl.url, name: resUrl.name })
+												}
+										} else {
+												this.fileList.push({ url: globalConfig.workflowEP+resUrl.url })
 										}
-                })
-            }
+										// this.fileList = [...list]
+										// console.log("fileList",this.fileList)
+										this.$emit('change', JSON.stringify(this.fileList))
+								},
+								fail(e) {
+									// console.log("error",e)
+								}
+						})
+						}
         }
     }
 </script>
@@ -203,5 +252,33 @@
 			width: 80px;
 			height: 80px;
 			padding-top: 5px;
+		}
+		.video-Box-video{
+			width: 80px;
+			height: 80px;
+		}
+		.video-BigBox{
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 99999;
+			background-color: #0008;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.video-Box-Big-video{
+			width: 100%;
+		}
+		.video-Box-Big-iconBox{
+			position: absolute;
+			top: 5px;
+			right: 5px;
+		}
+		.video-Box-Big-icon{
+			width: 20px;
+			height: 20px;
 		}
 </style>
